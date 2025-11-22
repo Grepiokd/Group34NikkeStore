@@ -1,7 +1,7 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: Build and deploy Node.js app to Azure Web App - comp3810SEF-Group34-app
+name: Build and deploy Node.js app to Azure Web App - sample-deploy-13223128-app
 
 on:
   push:
@@ -25,6 +25,7 @@ jobs:
 
       - name: npm install, build, and test
         run: |
+          cd server_project_v4_final
           npm install
           npm run build --if-present
           npm run test --if-present
@@ -51,15 +52,16 @@ jobs:
       - name: Login to Azure
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_6810545E2F504F4FB5757679AB050287 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_26FD78679FD048A09D5923A331F83649 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_8E74ECD8F3D54DFF96E9A96E972C0A71 }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_E17B54F32A334D89A5A2D7E2C73A313C }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_7CFD0374BE74464B9A2DABEEC2F44D63 }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_31BEB028421D4A24AADA01F6F86D0987 }}
 
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
         with:
-          app-name: 'comp3810SEF-Group34-app'
+          app-name: 'sample-deploy-13223128-app'
           slot-name: 'Production'
-          package: .
+          package: 'server_project_v4_final'
+
           
